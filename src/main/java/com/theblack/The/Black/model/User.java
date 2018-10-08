@@ -63,6 +63,8 @@ public class User implements Serializable {
         this.dateOfUpdate = LocalDateTime.now();
     }
 
+    public User(){}
+
     //Methods
     public void setAge(){
         this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();

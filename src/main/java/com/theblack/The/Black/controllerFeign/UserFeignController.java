@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  *
  */
 @Controller
+//@ExceptionHandler("className".class) //How to manage Exceptions
 public class UserFeignController {
 
     @Autowired
@@ -27,21 +30,27 @@ public class UserFeignController {
 
     //Get All the Users
     @RequestMapping(value="/feign/user", method = RequestMethod.GET)
+    @ResponseBody
     public ArrayList<User> getAllUsers(){
         return userServiceFeign.getAllUsers();
     }
 
     //Get an user by Mail
     @RequestMapping(value="/feign/user/{mail}", method = RequestMethod.GET)
+    @ResponseBody
     public User getUserByMail(@PathVariable(value="mail") String mail){
         return userServiceFeign.getUserByMail(mail);
     }
 
     //Delete an User
-    @RequestMapping(value = "/feign/user", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/feign/user/{idUser}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void deleteUser(@RequestBody User user){
-        userServiceFeign.deleteUser(user);
+    public String deleteUser(@PathVariable Long idUser){
+        if(userServiceFeign.deleteUser(idUser) == 0){
+            return "Error";
+        }else{
+            return "Ok";
+        }
     }
 
     //Update an User
