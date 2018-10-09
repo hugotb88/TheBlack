@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.io.Serializable;
-import java.sql.ResultSet;
 
 /**
  * @author Victor Hugo Olvera Cruz
@@ -28,5 +26,12 @@ public interface UserRepositoryFeign extends JpaRepository<User, Serializable>  
     @Modifying
     @Query(value="DELETE FROM users WHERE idUser =:idUser",nativeQuery=true)
     public Integer deleteUserById(@Param("idUser") Long idUser);
+
+    //Update an User by id
+    @Modifying
+    @Query(value="UPDATE FROM users WHERE idUser =:idUser",nativeQuery=true)
+    public Integer updateUser(@Param("idUser") User user);
+
+
 
 }

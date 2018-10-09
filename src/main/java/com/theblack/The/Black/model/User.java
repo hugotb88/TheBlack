@@ -2,7 +2,6 @@ package com.theblack.The.Black.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.springframework.context.annotation.Primary;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +14,7 @@ import java.time.Period;
  * POJO and Persistence
  */
 @Entity(name = "users")
-@IdClass(UserID.class)
+@IdClass(UserId.class)
 @Data
 public class User implements Serializable {
 
