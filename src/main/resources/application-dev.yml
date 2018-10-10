@@ -1,4 +1,3 @@
-#-----------------------Server Configuration (Tomcat) -----------------#
 server:
   port: 9090
   servlet:
@@ -18,7 +17,7 @@ logging:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/theblack
+    url: jdbc:mysql://localhost:3306/theblackdev
     username: root
     password: root
 
@@ -32,6 +31,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
+  profiles: dev
 
 
 #----------External REST Web Services with Feign Client ---------------#
