@@ -1,0 +1,36 @@
+#-----------------------Server Configuration (Tomcat) -----------------#
+server:
+  port: 9090
+  servlet:
+    contextPath: /theblack
+
+#----------------------- slf4j Logger  -------------------#
+logging:
+  file: /Users/victor olvera/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.theblack: DEBUG
+
+#------------------------- MySQL Configuration ------------------------#
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/theblack
+    username: root
+    password: root
+
+  #------------------------- Hibernate Configuration --------------------#
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        ddl-auto: update
+        naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+#----------External REST Web Services with Feign Client ---------------#
+#------------------------ (Netflix library) ----------------------------#
+#feign:
+#  user : http://localhost:8080/studyrest/users
