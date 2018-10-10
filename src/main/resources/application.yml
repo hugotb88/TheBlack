@@ -31,6 +31,6 @@ spring:
         naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 #----------External REST Web Services with Feign Client ---------------#
-#------------------------ (Netflix library) ----------------------------#
+#------------------------ (Netflix library) -----------------------------#
 #feign:
 #  user : http://localhost:8080/studyrest/users
